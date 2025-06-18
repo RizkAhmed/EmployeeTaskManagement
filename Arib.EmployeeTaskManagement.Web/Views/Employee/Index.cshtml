@@ -1,0 +1,139 @@
+﻿@model EmployeeAddEditDTO
+@{
+    var managers = new SelectList(Model.Manangers, "Value", "Text");
+    var department = new SelectList(Model.Departments, "Value", "Text");
+}
+<div class="container mt-5">
+    <div class="card bg-light w-100 mb-2" style="width: 18rem;">
+        <div class="card-body ">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Employees </h2>
+                <a id="add_employee" class="btn btn-success">Add New Employee</a>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light w-100" style="width: 18rem;">
+        <div class="card-body">
+            <table class="table table-bordered table-striped" id="employee_data">
+                <thead class="">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                        <th>Manager</th>
+                        <th>Image</th>
+                        <th>InsertionDate</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="employee_model" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="employee_model_lable_add">Add Employee</h5>
+                <h5 class="modal-title" id="employee_model_lable_edit">Edit Employe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="employee_form">
+                <input asp-for="Id" class="clearr" type="hidden" />
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" asp-for="FirstName" class="clearr form-control ">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" asp-for="LastName" class="clearr form-control ">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Salary</label>
+                                <input type="number"  asp-for="Salary"  class="clearr form-control ">
+                                <span asp-validation-for="Salary" class="text-danger"></span>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row mb-3">
+                  
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input type="text" asp-for="ImageFile" type="file" class="clearr form-control ">
+                                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Manger</label>
+                                <select asp-for="ManagerId" class="clearr form-select form-control" asp-items="managers">
+                                    <option value="">-Select Manager-</option>
+                                </select>
+                                <span asp-validation-for="ManagerId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select asp-for="DepartmentId" class="clearr form-select form-control" asp-items="department">
+                                    <option value="">-Select Department-</option>
+
+                                </select>
+                                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" id="submit">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid rounded" alt="Preview" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/views_js/employee.js"></script>
+
+}
