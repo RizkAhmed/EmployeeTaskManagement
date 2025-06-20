@@ -1,13 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arib.EmployeeTaskManagement.Web", "Arib.EmployeeTaskManagement.Web\Arib.EmployeeTaskManagement.Web.csproj", "{424E9983-AC55-4AD1-BDC5-E68A8D59B69C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arib.EmployeeTaskManagement.Services", "Arib.EmployeeTaskManagement.Services\Arib.EmployeeTaskManagement.Services.csproj", "{05EDD482-2602-42EE-B796-42D1A445D1A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arib.EmployeeTaskManagement.Infrastructure", "Arib.EmployeeTaskManagement.Infrastructure\Arib.EmployeeTaskManagement.Infrastructure.csproj", "{817219E6-02E4-4DFE-8631-426DE7D0CC7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{82FBF38F-25C0-4BE3-AB28-90131DC13B29}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\addDepartments.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\addDepartments.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\addEmployees.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\addEmployees.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\addTask.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\addTask.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\changeTaskStatus.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\changeTaskStatus.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\departments.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\departments.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\displayEmployeeImage.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\displayEmployeeImage.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\employees.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\employees.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\login.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\login.png
+		C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\task.png = C:\Users\TAG7\OneDrive\سطح المكتب\Screenshots\task.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
