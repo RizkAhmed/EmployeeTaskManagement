@@ -119,7 +119,7 @@ namespace Arib.EmployeeTaskManagement.Services.Services
                         EmployeeName = $"{t.Employee.FirstName} {t.Employee.LastName}",
                         InsertionDate = (t.CreateDate ?? DateTime.MinValue).ToString("yyyy-MM-dd HH:mm")
                     },
-                    t => !t.IsDeleted && t.Employee.ManagerId == _unitOfWork.ClaimsService.UserId
+                    t => !t.IsDeleted && t.Employee.ManagerId == _unitOfWork.ClaimsService.EmployeeId
                 );
 
                 return new ResponseDTO(true, string.Empty, tasks);
@@ -139,7 +139,7 @@ namespace Arib.EmployeeTaskManagement.Services.Services
                 Value = e.Id,
                 Text = $"{e.FirstName} {e.LastName}"
             },
-            e => !e.IsDeleted && e.ManagerId == _unitOfWork.ClaimsService.UserId);
+            e => !e.IsDeleted && e.ManagerId == _unitOfWork.ClaimsService.EmployeeId);
 
             return dto;
         }
