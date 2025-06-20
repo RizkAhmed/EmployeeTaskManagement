@@ -1,5 +1,79 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TaskAddEditDTO
 @{
+    var employees = new SelectList(Model.Employees, "Value", "Text");
+}
+<div class="container mt-5">
+    <div class="card bg-light w-100 mb-2">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Tasks</h2>
+                <a id="add_task" class="btn btn-success">Add New Task</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-light w-100">
+        <div class="card-body">
+            <table class="table table-bordered table-striped" id="task_data">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Employee</th>
+                        <th>Status</th>
+                        <th>Insertion Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="task_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="task_modal_label_add">Add Task</h5>
+                <h5 class="modal-title" id="task_modal_label_edit">Edit Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="task_form">
+                <input asp-for="Id" class="clearr" type="hidden" />
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label>Title</label>
+                        <input asp-for="Title" class="form-control clearr" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label>Description</label>
+                        <textarea asp-for="Description" class="form-control clearr"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label>Employee</label>
+                        <select asp-for="EmployeeId" class="clearr form-select form-control" asp-items="employees">
+                            <option value="">-- Select --</option>
+                        </select>
+                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" id="submit_task">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/views_js/task.js"></script>
 }

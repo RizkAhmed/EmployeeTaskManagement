@@ -11,6 +11,7 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Implementation
         private readonly ApplicationDbContext _context;
 
         public IFileService FileService { get; }
+        public IClaimsService ClaimsService { get; }
 
         public IRepository<T> Repository<T>() where T : class
         {
@@ -23,11 +24,12 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Implementation
         }
         public UnitOfWork(
             ApplicationDbContext context,
-            IFileService fileService)
+            IFileService fileService,
+            IClaimsService claimsService)
         {
             _context = context;
             FileService = fileService;
-
+            ClaimsService = claimsService;
         }
 
 

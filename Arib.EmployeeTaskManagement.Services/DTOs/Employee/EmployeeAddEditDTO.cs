@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 
 
-namespace Arib.EmployeeTaskManagement.Services.DTOs.EmployeeDTOs
+namespace Arib.EmployeeTaskManagement.Services.DTOs.Employee
 {
     public class EmployeeAddEditDTO
     {

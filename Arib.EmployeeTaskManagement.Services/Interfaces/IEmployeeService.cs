@@ -1,4 +1,4 @@
-﻿using Arib.EmployeeTaskManagement.Services.DTOs.EmployeeDTOs;
+﻿using Arib.EmployeeTaskManagement.Services.DTOs.Employee;
 using Arib.EmployeeTaskManagement.Services.DTOs.GenericDTOs;
 using System;
 using System.Collections.Generic;

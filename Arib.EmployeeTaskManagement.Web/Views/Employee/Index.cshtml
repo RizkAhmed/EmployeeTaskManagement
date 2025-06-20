@@ -85,8 +85,10 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Manger</label>
-                                <select asp-for="ManagerId" class="clearr form-select form-control" asp-items="managers">
+@*                                 <select asp-for="ManagerId" class="clearr form-select form-control" asp-items="managers">
                                     <option value="">-Select Manager-</option>
+                                </select> *@
+                                <select asp-for="ManagerId" class="clearr form-select form-control">
                                 </select>
                                 <span asp-validation-for="ManagerId" class="text-danger"></span>
                             </div>
@@ -95,7 +97,7 @@
                             <div class="form-group">
                                 <label>Department</label>
                                 <select asp-for="DepartmentId" class="clearr form-select form-control" asp-items="department">
-                                    <option value="">-Select Department-</option>
+                                    <option value="">-- Select --</option>
 
                                 </select>
                                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
@@ -105,7 +107,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-outline-success" id="submit">Save</button>
                 </div>
             </form>

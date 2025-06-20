@@ -1,10 +1,13 @@
-﻿using Arib.EmployeeTaskManagement.Services.DTOs.EmployeeDTOs;
+﻿using Arib.EmployeeTaskManagement.Infrastructure.Enums;
+using Arib.EmployeeTaskManagement.Services.DTOs.Employee;
 using Arib.EmployeeTaskManagement.Services.DTOs.GenericDTOs;
 using Arib.EmployeeTaskManagement.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arib.EmployeeTaskManagement.Web.Controllers
 {
+    [Authorize(Roles = $"{nameof(EUserRole.Admin)}")]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;

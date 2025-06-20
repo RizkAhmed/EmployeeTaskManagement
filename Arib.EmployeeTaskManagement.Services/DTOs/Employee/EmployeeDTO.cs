@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arib.EmployeeTaskManagement.Services.DTOs.EmployeeDTOs
+namespace Arib.EmployeeTaskManagement.Services.DTOs.Employee
 {
     public record EmployeeDTO
     {

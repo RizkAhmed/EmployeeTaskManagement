@@ -1,0 +1,34 @@
+﻿
+<div class="container mt-5">
+    <div class="card bg-light w-100 mb-2">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>My Tasks</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-light w-100">
+        <div class="card-body">
+            <table class="table table-bordered table-striped" id="task_data">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Manger</th>
+                        <th>Insertion Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/views_js/mytasks.js"></script>
+}

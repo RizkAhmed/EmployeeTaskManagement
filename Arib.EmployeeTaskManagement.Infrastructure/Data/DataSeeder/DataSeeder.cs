@@ -29,7 +29,7 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Data.DataSeeder
         }
         private static async Task TaskStatusSeeding(ApplicationDbContext context)
         {
-            if (!context.Departments.Any())
+            if (!context.TaskStatus.Any())
             {
                 await context.Database.OpenConnectionAsync();
                 await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.TaskStatus ON");

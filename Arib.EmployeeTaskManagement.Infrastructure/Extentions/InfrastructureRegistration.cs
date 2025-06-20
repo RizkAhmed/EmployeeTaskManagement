@@ -3,6 +3,7 @@ using Arib.EmployeeTaskManagement.Infrastructure.Data;
 using Arib.EmployeeTaskManagement.Infrastructure.Helpers;
 using Arib.EmployeeTaskManagement.Infrastructure.Implementation;
 using Arib.EmployeeTaskManagement.Infrastructure.Interfaces;
+using Arib.EmployeeTaskManagement.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,16 +20,12 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Extentions
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-
-
-            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            builder.Services.AddScoped<ITaskRepository, TaskRepository>();
-            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.Configure<FileSettings>(builder.Configuration.GetSection("FileSettings"));
-            builder.Services.AddScoped<IFileService, FileService>();
+            builder.Services.AddScoped<IFileService, FileService>(); 
+            builder.Services.AddScoped<IClaimsService, ClaimsService>();
+
             return builder;
         }
     }

@@ -1,5 +1,74 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model DepartmentAddEditDTO
+
+<div class="container mt-5">
+    <div class="card bg-light w-100 mb-2" style="width: 18rem;">
+        <div class="card-body ">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Departments </h2>
+                <a id="add_department" class="btn btn-success">Add New Department</a>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light w-100" style="width: 18rem;">
+        <div class="card-body">
+            <table class="table table-bordered table-striped" id="department_data">
+                <thead class="">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Insertion date</th>
+                        <th>Count of employees</th>
+                        <th>Total salaries</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="department_model" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="department_model_lable_add">Add Department</h5>
+                <h5 class="modal-title" id="department_model_lable_edit">Edit Department</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="department_form">
+                <input asp-for="Id" class="clearr" type="hidden" />
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" asp-for="Name" class="clearr form-control ">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" id="submit">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/views_js/department.js"></script>
+
 }

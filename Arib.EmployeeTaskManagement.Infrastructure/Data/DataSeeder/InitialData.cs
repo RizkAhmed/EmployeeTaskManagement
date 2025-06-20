@@ -50,7 +50,7 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Data.DataSeeder
                 Salary = 15000,
                 DepartmentId = 1,
                 ImagePath = "images/employees/ahmed.jpg",
-                CreateDate = DateTime.Now,
+
             },
             new Employee
             {
@@ -61,7 +61,7 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Data.DataSeeder
                 DepartmentId = 2,
                 ImagePath = "images/employees/sara.jpg",
                 ManagerId = 1,
-                CreateDate = DateTime.Now,
+
             },
             new Employee
             {
@@ -72,7 +72,7 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Data.DataSeeder
                 DepartmentId = 2,
                 ImagePath = "images/employees/omar.jpg",
                 ManagerId = 2,
-                CreateDate = DateTime.Now,
+
             },
             new Employee
             {
@@ -82,7 +82,7 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Data.DataSeeder
                 Salary = 35000,
                 DepartmentId = 2,
                 ImagePath = "images/employees/rizk.jpg",
-                CreateDate = DateTime.Now,
+
             }
         };
 

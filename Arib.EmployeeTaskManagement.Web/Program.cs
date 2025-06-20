@@ -2,6 +2,7 @@ using Arib.EmployeeTaskManagement.Infrastructure.Data.DataSeeder;
 using Arib.EmployeeTaskManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Arib.EmployeeTaskManagement.Infrastructure.Extentions;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Arib.EmployeeTaskManagement.Web
 {
@@ -16,6 +17,7 @@ namespace Arib.EmployeeTaskManagement.Web
 
             builder.AddInfrastructureRegistration();
             builder.AddServicesRegistration();
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
             using (var scope = app.Services.CreateScope())
@@ -34,12 +36,14 @@ namespace Arib.EmployeeTaskManagement.Web
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Account}/{action=Login}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

@@ -1,4 +1,27 @@
-﻿function generate_dataTable(url,tableId,columns) {
+﻿function Build_DropdownList(html_id, url, selected_val = "") {
+    let parentElement = $("#" + html_id).empty().append(`<option value="">Loading data...</option>`);
+
+    $.get(`/api/DropDown/${url}`)
+        .done(response => {
+            let options = response.map(item => `<option value="${item.value}">${item.text}</option>`).join('');
+            parentElement.html(`<option value="">-- Select --</option>` + options);
+
+            // Set the selected value if it exists in the response
+            if (selected_val && response.some(item => item.value == selected_val)) {
+                parentElement.val(selected_val).trigger("change");
+            }
+        })
+        .fail((jqXHR, textStatus, errorThrown) => {
+            console.error("AJAX Error:", textStatus, errorThrown);
+            swal({
+                title: 'Error!',
+                text: 'Error while getting data',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+}
+function generate_dataTable(url, tableId, columns) {
     $.ajax({
         url: url,
         type: 'GET',

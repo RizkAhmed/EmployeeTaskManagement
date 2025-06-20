@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
-    $("#Books").addClass("active-menu");
     loadData();
-
+    Build_DropdownList("ManagerId",`GetEmployees`)
 });
 $("#add_employee").on('click', function (e) {
     $('#submit').prop('disabled', false);
@@ -83,6 +82,7 @@ $(document).on('click', '.view-image', function () {
 });
 
 async function build_edit_employee_form(index) {
+    $('.clearr').val("");
     var row = $('#employee_data').DataTable().row(index);
     var data = row.data();
     $('#ImageFile')[0].files = await SetFile(data.imagePath);
@@ -91,8 +91,10 @@ async function build_edit_employee_form(index) {
     $('#FirstName').val(data.firstName);
     $('#LastName').val(data.lastName);
     $('#Salary').val(data.salary);
-    if (data.managerId > 0)
-        $('#ManagerId').val(`${data.managerId}`);
+    //if (data.managerId > 0)
+    //    $('#ManagerId').val(`${data.managerId}`);
+    Build_DropdownList("ManagerId", `GetEmployees?id=${data.id}`, data.managerId)
+
     $('#DepartmentId').val(`${data.departmentId}`);
 
     $(".modal-title").css("display", "none");
@@ -119,13 +121,24 @@ function delete_employee(id) {
                 url: "/Employee/Delete",
                 data: { id: id },
                 success: function (response) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Deleted!",
-                        text: response.message,
-                        confirmButtonText: "OK"
-                    });
-                    loadData(); // Refresh the table or list
+                    if (response.isSuccess) {
+
+                        Swal.fire({
+                            icon: "success",
+                            title: "Deleted!",
+                            text: response.message,
+                            confirmButtonText: "OK"
+                        });
+                        loadData(); 
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: result.message || 'Something went wrong. Please try again.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
                 },
                 error: function (xhr) {
                     Swal.fire({

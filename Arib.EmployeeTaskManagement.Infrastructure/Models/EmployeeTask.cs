@@ -13,7 +13,6 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Models
 
         public string? Description { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public int StatusId { get; set; } = (int)Enums.ETaskStatus.Pending;
 
         public Task_Status? Status { get; set; }

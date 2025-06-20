@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Arib.EmployeeTaskManagement.Infrastructure.Migrations
+namespace Arib.EmployeeTaskManagement.Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class initial : Migration
@@ -111,7 +111,6 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StatusId = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     CreateBy = table.Column<int>(type: "int", nullable: true),

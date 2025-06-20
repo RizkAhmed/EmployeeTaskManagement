@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Arib.EmployeeTaskManagement.Infrastructure.Migrations
+namespace Arib.EmployeeTaskManagement.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250618005227_initial")]
-    partial class initial
+    [Migration("20250620135648_add-icon-col-toTaskStatus")]
+    partial class addiconcoltoTaskStatus
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -149,9 +149,6 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Migrations
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("DeleteBy")
                         .HasColumnType("int");
 
@@ -202,6 +199,10 @@ namespace Arib.EmployeeTaskManagement.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -1,6 +1,6 @@
 ﻿using Arib.EmployeeTaskManagement.Infrastructure.Interfaces;
 using Arib.EmployeeTaskManagement.Infrastructure.Models;
-using Arib.EmployeeTaskManagement.Services.DTOs.EmployeeDTOs;
+using Arib.EmployeeTaskManagement.Services.DTOs.Employee;
 using Arib.EmployeeTaskManagement.Services.DTOs.GenericDTOs;
 using Arib.EmployeeTaskManagement.Services.Interfaces;
 namespace Arib.EmployeeTaskManagement.Services.Services
@@ -32,7 +32,7 @@ namespace Arib.EmployeeTaskManagement.Services.Services
                     ImagePath = imagePath,
                     DepartmentId = dto.DepartmentId,
                     ManagerId = dto.ManagerId,
-                    CreateBy = 1, // TODO: Replace with logged-in user ID
+                    CreateBy = _unitOfWork.ClaimsService.UserId,
                     CreateDate = DateTime.Now
                 };
 
@@ -77,7 +77,7 @@ namespace Arib.EmployeeTaskManagement.Services.Services
                 dbEmp.ManagerId = dto.ManagerId;
                 dbEmp.Salary = dto.Salary;
                 dbEmp.UpdateDate = DateTime.Now;
-                dbEmp.UpdateBy = 1; // TODO: Replace with logged-in user ID
+                dbEmp.UpdateBy = _unitOfWork.ClaimsService.UserId;
 
                 // Handle file update
                 if (dto.ImageFile is { Length: > 0 })
@@ -127,9 +127,9 @@ namespace Arib.EmployeeTaskManagement.Services.Services
 
                 emp.IsDeleted = true;
                 emp.UpdateDate = DateTime.Now;
-                emp.UpdateBy = 1;
+                emp.UpdateBy = _unitOfWork.ClaimsService.UserId;
                 emp.DeleteDate = DateTime.Now;
-                emp.DeleteBy = 1;
+                emp.DeleteBy = _unitOfWork.ClaimsService.UserId;
                 _unitOfWork.Repository<Employee>().Update(emp);
                 if (await _unitOfWork.CommitAsync())
                 {
